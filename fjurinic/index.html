@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- <script src="app.js"></script> --> 
+</head>
+<body>
+    <h1>My tehnologies</h1>
+    <form>
+        <input type="text" name="text" id="txt" placeholder="Enter new tehnology..">
+        <button type="submit" class="button" id="btn">Add</button>
+        <a href id="remove">Remove all items</a>
+    </form>
+
+    <div class="container" id="container">
+        <ul id="ul">
+        </ul>
+    </div>
+
+    <script>
+        const addBtn = document.getElementById("btn")
+        const inputText = document.getElementById('txt');
+        const list = document.getElementById('ul');
+        addBtn.addEventListener('click', (e)=> {
+            if(inputText.value != ""){
+                e.preventDefault();
+                const item = document.createElement('li');
+                item.innerText = inputText.value;
+                list.appendChild(item);
+            }
+            inputText.value = "";
+            e.preventDefault();
+        });
+
+        let btnRemove = document.getElementById('remove');
+        let parent = document.getElementById('ul');
+        let childs = document.getElementById('li');
+
+        btnRemove.addEventListener('click', ()=> {
+            for(child of childs){
+                parent.removeChild(child);
+            }
+            
+        })
+    </script>
+</body>
+</html>
